@@ -678,13 +678,31 @@ footer {
         margin-bottom: 60px;
     }
 
+    .project__wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        overflow: hidden;
+    }
+
+    .project__img {
+        width: 35%;
+        object-fit: cover;
+        height: auto;
+        display: block;
+    }
+
     .project__description {
         position: static;
         transform: none;
         opacity: 1;
+        width: 65%;
+        max-width: none;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
         background: #1c1d25;
-        padding: 24px;
-        max-width: 100%;
+        padding: 20px;
     }
 
     .project__wrapper:before{
@@ -697,15 +715,16 @@ footer {
     }
 
     .project__description--title{
-        font-size: 28px;
+        font-size: 22px;
     }
 
     .project__description--subtitle{
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .project__description--para{
-        font-size: 16px;
+        font-size: 14px;
+        margin: 12px 0;
     }
 
     .footer__social--link {
