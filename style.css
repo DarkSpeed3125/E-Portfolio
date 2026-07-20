@@ -18,6 +18,21 @@ body{
     color: #e8d8e8
 }
 
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(255,220,180,.12),
+        transparent 350px
+    );
+
+    pointer-events:none;
+}
+
 h2, h3, h4, h5, h6{
     color: #C8C2C0;
     text-align: center;
@@ -283,7 +298,7 @@ a {
     flex-direction: column;
     opacity: 0;
     animation: reveal 1.2s ease forwards;
-    animation-delay: 3.5s
+    animation-delay: 3.5s;
 }
 
 .about-me__info {
@@ -348,9 +363,6 @@ a {
 }
 
 #languages{
-    opacity: 0;
-    animation: reveal 1.2s ease forwards;
-    animation-delay: 3.5s;
 }
 
 .language {
@@ -394,9 +406,6 @@ a {
 /* PROJECTS */
 
 #projects{
-    opacity: 0;
-    animation: reveal 1.2s ease forwards;
-    animation-delay: 3.5s;
 }
 
 .project:last-child{
@@ -484,9 +493,6 @@ a {
 
 footer {
     background-color: #242424;
-    opacity: 0;
-    animation: reveal 1.2s ease forwards;
-    animation-delay: 3.5s;
 }
 
 
@@ -534,6 +540,37 @@ footer {
 .footer__anchor:hover .footer__logo--popup{
     transform: translateX(80px);
     opacity: 1;
+}
+
+/* JAVASCRIPT CLASSES */
+
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cursor-particle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: #f7df94;
+    box-shadow: 
+        0 0 8px #f7df94,
+        0 0 16px #b38cff,
+        0 0 24px #7b4cff;
+
+    z-index: 99;
+    animation: particleFade 1s ease-out forwards;
 }
 
 
@@ -631,6 +668,18 @@ footer {
         opacity: 0;
         transform: translateY(-20px);
         visibility: hidden;
+    }
+}
+
+@keyframes particleFade{
+    from {
+        opacity: 1;
+        transform: translate(0,0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-40px) scale(0);
     }
 }
 
