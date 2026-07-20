@@ -362,9 +362,6 @@ a {
     transition: all 300ms ease;
 }
 
-#languages{
-}
-
 .language {
     width:25%;
     display: flex;
@@ -404,9 +401,6 @@ a {
 }
 
 /* PROJECTS */
-
-#projects{
-}
 
 .project:last-child{
     margin-bottom: 40px;
