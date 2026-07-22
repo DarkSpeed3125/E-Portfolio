@@ -334,9 +334,148 @@ a {
 }
 
 .about-me__img--container{
-    flex: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.rune__orb {
+    position: relative;
+    width: 320px;
+    height: 320px;
+}
+
+.orb {
+    position: absolute;
+    inset: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffe7a3, #8464ff 60%, #221133);
+    box-shadow: 
+        0 0 30px #8b5cff,
+        0 0 90px rgba(125, 80, 255, .5);
+    animation: 
+        orbFloat 5s ease-in-out infinite,
+        orbPulse 3s ease-in-out infinite;
+    transition: all 200ms ease;
+}
+
+.energy__ring {
+    position: absolute;
+    inset: 25px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 220, 180, .25)
+}
+
+.ring1 {
+    animation: spin 12s linear infinite;
+}
+
+.ring2 {
+    inset: 45px;
+    animation: spinReverse 8s linear infinite;
+}
+
+.surge .ring1 {
+    animation-duration: 1s;
+}
+
+.surge .ring2 {
+    animation-duration: .7s;
+}
+
+.rune {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+    font-size: 2rem;
+    color: #f9d97a;
+    text-shadow: 
+        0 0 8px gold,
+        0 0 20px violet;    
+}
+
+.rune1 {
+    animation: orbit1 10s linear infinite;
+}
+
+.rune2{
+    animation: orbit2 10s linear infinite;
+}
+
+.rune3 {
+    animation: orbit3 10s linear infinite;
+}
+
+.glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    filter: blur(60px);
+    background: rgba(170, 120, 255, .2);
+    z-index: -1;
+}
+
+.smoke {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: black;
+    filter: blur(10px);
+    pointer-events: none;
+    animation: smokeRise 8s linear infinite;
+}
+
+.s1 {
+    animation-delay: 0;
+}
+
+.s2 {
+    animation-delay: 2.5s;
+}
+
+.s3 {
+    animation-delay: 5s;
+}
+
+.flicker {
+    opacity: .2;
+    transform: scale(.8);
+}
+
+.lightning {
+    position: absolute;
+    inset: 40px;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.lightning:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 6px;
+    height: 180px;
+    background: linear-gradient(transparent, violet, white, violet, transparent);
+    filter: 
+        blur(1px)
+        drop-shadow(0 0 12px violet)
+        drop-shadow(0 0 24px white);
+}
+
+.surge .orb {
+    animation: none;
+    transform: scale(1.18);
+    box-shadow:
+        0 0 40px gold,
+        0 0 90px violet,
+        0 0 160px deeppink;
 }
 
 .about-me__info--para{
@@ -674,6 +813,106 @@ footer {
     to {
         opacity: 0;
         transform: translateY(-40px) scale(0);
+    }
+}
+
+@keyframes orbFloat{
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes orbPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes spin {
+    from{
+        transform:rotate(0deg);
+    }
+
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes spinReverse {
+    from{
+        transform:rotate(360deg);
+    }
+
+    to {
+        transform:rotate(0deg);
+    }
+}
+
+@keyframes orbit1{
+    from{
+        transform:
+            rotate(0deg)
+            translateX(120px)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            rotate(360deg)
+            translateX(120px)
+            rotate(-360deg);
+    }
+}
+
+@keyframes orbit2{
+    from{
+        transform:
+            rotate(120deg)
+            translateX(120px)
+            rotate(-120deg);
+    }
+
+    to{
+        transform:
+            rotate(480deg)
+            translateX(120px)
+            rotate(-480deg);
+    }
+}
+
+@keyframes orbit3{
+    from{
+        transform:
+            rotate(240deg)
+            translateX(120px)
+            rotate(-240deg);
+    }
+
+    to{
+        transform:
+            rotate(600deg)
+            translateX(120px)
+            rotate(-600deg);
+    }
+}
+
+@keyframes smokeRise {
+    from {
+        transform: translate(-50%, 20px) scale(.4);
+        opacity: .6;
+    }
+
+    to {
+        transform: translate(-50%, -120px) scale(2);
+        opacity: 0;
     }
 }
 
