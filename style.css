@@ -918,18 +918,26 @@ footer {
 
 /* FOR MOBILE VIEWERS */
 
-@media (max-width: 768px) {
-    nav{
-        justify-content: center;
-        height: auto;
-        padding: 24px 0;
+@media (max-width: 992px) {
+    .row {
+        max-width: 90%;
     }
 
-    .nav__links--list {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 16px;
+    nav {
+        padding: 0 24px;
+    }
+
+    .nav__links--list li {
+        margin: 0 10px;
+    }
+
+    .portfolio__header h1{
+        font-size: 3rem;
+        letter-spacing: 6px;
+    }
+
+    .section__title {
+        font-size: 2rem;
     }
 
     .about-me__info--title {
@@ -938,109 +946,173 @@ footer {
 
     .about-me__info--para {
         font-size: 18px;
-        padding: 0 24px;
     }
 
-    .about-me__picture--mask {
-        width: 90px;
-        height: 90px;
-        transform: scale(1.2);
+    .rune__orb {
+        width: 280px;
+        height: 280px;
     }
 
-    .about-me__img--container {
-        margin-top: 32px;
+    .orb {
+        inset: 70px;
     }
 
-    .section__title {
+    .project__description--title{
         font-size: 2rem;
     }
 
-    .language{
-        width: 50%
+    .project__description {
+        left: 50px;
+        max-width: 450px;
     }
 
-    .project{
-        margin-bottom: 60px;
+    .footer__social--list {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        justify-content: center;
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .nav__links--list {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .nav__links--list li {
+        margin: 0;
+    }
+
+    .portfolio__header h1 {
+        font-size: 2rem;
+        letter-spacing: 3px;
+        padding: 0 20px;
+        line-height: 1.3;
+    }
+
+    .moon {
+        width: 140px;
+        height: 140px;
+    }
+
+    .runes {
+        font-size: 1.5rem;
+        letter-spacing: 10px;
+    }
+
+    .about-me__info--title {
+        font-size: 1.7rem;
+    }
+
+    .about-me__info--para {
+        font-size: 1rem;
+        padding: 0 12px;
+    }
+
+    .rune__orb {
+        width: 220px;
+        height: 220px;
+    }
+
+    .orb {
+        inset: 55px;
+    }
+
+    .energy__ring {
+        inset: 18px;
+    }
+
+    .ring2 {
+        inset: 32px;
+    }
+
+    .language {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+
+    .language__img {
+        max-width: 80px;
     }
 
     .project__wrapper {
         display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        overflow: hidden;
+        flex-direction: column;
+    }
+
+    .project__wrapper:before {
+        display: none;
     }
 
     .project__img {
-        width: 35%;
-        object-fit: cover;
-        height: auto;
-        display: block;
+        width: 100%;
+        filter: none;
+        transform: none;
     }
 
     .project__description {
         position: static;
         transform: none;
         opacity: 1;
-        width: 65%;
-        max-width: none;
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        background: #1c1d25;
-        padding: 20px;
+        max-width: 100%;
+        padding: 25px;
+        background-color: #1c1d25;
     }
 
-    .project__wrapper:before{
-        display: none;
-    }
-
-    .project:hover .project__img{
+    .project:hover .project__img {
         transform: none;
         filter: none;
     }
 
-    .project__description--title{
-        font-size: 22px;
+    .project:hover .project__description {
+        transform: none;
     }
 
-    .project__description--subtitle{
-        font-size: 15px;
+    .project__description--title {
+        font-size: 1.6rem;
     }
 
-    .project__description--para{
-        font-size: 14px;
-        margin: 12px 0;
+    .project__description--subtitle {
+        font-size: 1rem;
     }
 
-    .footer__social--link {
+    .project__description--para {
+        font-size: .95rem;
+    }
+
+    .project__description--link {
+        font-size: 1.2rem;
+    }
+
+    .footer__social--list {
         flex-direction: column;
         align-items: center;
         gap: 20px;
     }
 
-    .footer__img{
-        width: 220px;
+    .project:hover .project__wrapper:before {
+        opacity: 0;
     }
-    
-    .footer__logo--popup{
+
+    .smoke, 
+    .lightning {
         display: none;
     }
 
-    .moon{
-        width: 150px;
-        height: 150px;
-    }
-
-    .runes {
-        font-size: 1.5rem;
-        letter-spacing: 12px;
-    }
-
-    .container{
-        padding: 0 24px;
-    }
-
-    .particles{
+    .body:before {
         display: none;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .project{
+        margin-bottom: 70px;
     }
 }
