@@ -339,144 +339,167 @@ a {
     justify-content: center;
 }
 
-.rune__orb {
+/* We take a brief pause from the about me section to work on the magic circle! */
+
+.magic-circle {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 420px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    transition: transform 200ms ease-out;
 }
 
-.orb {
-    position: absolute;
-    inset: 80px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ffe7a3, #8464ff 60%, #221133);
-    box-shadow: 
-        0 0 30px #8b5cff,
-        0 0 90px rgba(125, 80, 255, .5);
-    animation: 
-        orbFloat 5s ease-in-out infinite,
-        orbPulse 3s ease-in-out infinite;
-    transition: all 200ms ease;
-}
-
-.energy__ring {
-    position: absolute;
-    inset: 25px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 220, 180, .25)
-}
-
-.ring1 {
-    animation: spin 12s linear infinite;
-}
-
-.ring2 {
-    inset: 45px;
-    animation: spinReverse 8s linear infinite;
-}
-
-.surge .ring1 {
-    animation-duration: 1s;
-}
-
-.surge .ring2 {
-    animation-duration: .7s;
-}
-
-.rune {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -16px;
-    margin-top: -16px;
-    font-size: 2rem;
-    color: #f9d97a;
-    text-shadow: 
-        0 0 8px gold,
-        0 0 20px violet;    
-}
-
-.rune1 {
-    animation: orbit1 10s linear infinite;
-}
-
-.rune2{
-    animation: orbit2 10s linear infinite;
-}
-
-.rune3 {
-    animation: orbit3 10s linear infinite;
-}
-
-.glow {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    filter: blur(60px);
-    background: rgba(170, 120, 255, .2);
-    z-index: -1;
-}
-
-.smoke {
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: black;
-    filter: blur(10px);
-    pointer-events: none;
-    animation: smokeRise 8s linear infinite;
-}
-
-.s1 {
-    animation-delay: 0;
-}
-
-.s2 {
-    animation-delay: 2.5s;
-}
-
-.s3 {
-    animation-delay: 5s;
-}
-
-.flicker {
-    opacity: .2;
-    transform: scale(.8);
-}
-
-.lightning {
+.magic-circle__glow {
     position: absolute;
     inset: 40px;
     border-radius: 50%;
-    opacity: 0;
+    background: radial-gradient(circle, rgba(190, 90, 255, .20), rgba(80, 220, 210, .08) 45%, transparent 70%);
+    filter: blur(25px);
+    animation: magicPulse 4s ease-in-out infinite;
 }
 
-.lightning:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    width: 6px;
-    height: 180px;
-    background: linear-gradient(transparent, violet, white, violet, transparent);
+.magic-circle__svg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
     filter: 
-        blur(1px)
-        drop-shadow(0 0 12px violet)
-        drop-shadow(0 0 24px white);
+        drop-shadow(0 0 5px rgba(185, 75, 225, .8))
+        drop-shadow(0 0 18px rgba(130, 70, 255, .45));
+    animation: magicFloat 6s ease-in-out infinite;
 }
 
-.surge .orb {
-    animation: none;
-    transform: scale(1.18);
-    box-shadow:
-        0 0 40px gold,
-        0 0 90px violet,
-        0 0 160px deeppink;
+.circle {
+    fill: none;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
 }
+
+.circle__outer {
+    stroke: rgba(80, 220, 210, .85);
+    stroke-width: 5;
+    animation: rotateCircle 35s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.circle__middle {
+    stroke: rgba(175, 65, 235, .85);
+    stroke-width: 3;
+    stroke-dasharray: 4 12; 
+    animation: rotateCircleReverse 25s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.circle__inner {
+    stroke: rgba(190, 90, 255, .9);
+    stroke-width: 3;
+    animation: rotateCircle 18s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.circle__core {
+    stroke: rgba(90, 230, 215, .9);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 8px rgba(80, 230, 210, .8));
+}
+
+.geometry {
+    fill: none;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.geometry__primary {
+    stroke: rgba(180, 65, 235, .95);
+    stroke-width: 5;
+    filter: drop-shadow(0 0 5px rgba(185, 70, 255, .8));
+    animation: geometryPulse 4s ease-in-out infinite;
+}
+
+.geometry__secondary {
+    stroke: rgba(150, 90, 235, .7);
+    stroke-width: 3;
+    animation: geometryRotate 20s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.geometry__diamond {
+    stroke: rgba(90, 220, 210, .85);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 5px rgba(80, 220, 210, .8));
+}
+
+.node {
+    fill: #8ce8df;
+    filter:
+        drop-shadow(0 0 5px #6ce3d8)
+        drop-shadow(0 0 12px #a54cff);
+}
+
+.nodes__small {
+    fill: #d88cff;
+}
+
+.center-symbol {
+    fill: none;
+    stroke: #dba2ff;
+    stroke-width: 4;
+    filter: 
+        drop-shadow(0 0 5px #b74cff)
+        drop-shadow(0 0 12px #7d5cff);
+    animation: centerPulse 3s ease-in-out infinite;
+}
+
+.magic-rune {
+    position: absolute;
+    font-size: 28px;
+    color: rgba(150, 235, 225, .65);
+    text-shadow: 
+        0 0 8px rgba(90, 220, 210, .8)
+        0 0 18px rgba(170, 70, 255, .6);
+    pointer-events: none;
+}
+
+.magic-runeA {
+    top: 15%;
+    left: 48%;
+    animation: mcRuneFloat  5s ease-in-out infinite;
+}
+
+.magic-runeB {
+    top: 38%;
+    right: 3%;
+    animation: mcRuneFloat 6s ease-in-out infinite reverse;
+}
+
+.magic-runeC {
+    top: 18%;
+    right: 20%;
+    animation: mcRuneFloat 5.5s ease-in-out infinite;
+}
+
+.magic-runeD {
+    bottom: 10%;
+    left: 47%;
+    animation: mcRuneFloat 7s ease-in-out infinite reverse;
+}
+
+.magic-runeE {
+    bottom: 35%;
+    left: 3%;
+    animation: mcRuneFloat 6s ease-in-out infinite;
+}
+
+.magic-runeF {
+    top: 35%;
+    left: 17%;
+    animation: mcRuneFloat 4.5s ease-in-out infinite reverse;
+}
+
+/* Now, Back to the About-me Section */
 
 .about-me__info--para{
     margin-bottom: 28px;
@@ -816,103 +839,93 @@ footer {
     }
 }
 
-@keyframes orbFloat{
+@keyframes rotateCircle {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateCircleReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes geometryRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes geometryPulse {
+    0%, 100% {
+        opacity: .65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes centerPulse {
+    0%, 100% {
+        opacity: .65;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+@keyframes magicPulse {
+    0%, 100% {
+        opacity: .45;
+        transform: scale(.95);
+    }
+
+    50% {
+        opacity: .9;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes magicFloat {
     0%, 100% {
         transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-10px);
     }
 }
 
-@keyframes orbPulse {
+@keyframes mcRuneFloat {
     0%, 100% {
-        transform: scale(1);
+        transform: translateY(0);
+        opacity: .45;
     }
 
     50% {
-        transform: scale(1.05);
-    }
-}
-
-@keyframes spin {
-    from{
-        transform:rotate(0deg);
-    }
-
-    to {
-        transform:rotate(360deg);
-    }
-}
-
-@keyframes spinReverse {
-    from{
-        transform:rotate(360deg);
-    }
-
-    to {
-        transform:rotate(0deg);
-    }
-}
-
-@keyframes orbit1{
-    from{
-        transform:
-            rotate(0deg)
-            translateX(120px)
-            rotate(0deg);
-    }
-
-    to{
-        transform:
-            rotate(360deg)
-            translateX(120px)
-            rotate(-360deg);
-    }
-}
-
-@keyframes orbit2{
-    from{
-        transform:
-            rotate(120deg)
-            translateX(120px)
-            rotate(-120deg);
-    }
-
-    to{
-        transform:
-            rotate(480deg)
-            translateX(120px)
-            rotate(-480deg);
-    }
-}
-
-@keyframes orbit3{
-    from{
-        transform:
-            rotate(240deg)
-            translateX(120px)
-            rotate(-240deg);
-    }
-
-    to{
-        transform:
-            rotate(600deg)
-            translateX(120px)
-            rotate(-600deg);
-    }
-}
-
-@keyframes smokeRise {
-    from {
-        transform: translate(-50%, 20px) scale(.4);
-        opacity: .6;
-    }
-
-    to {
-        transform: translate(-50%, -120px) scale(2);
-        opacity: 0;
+        transform: translateY(-10px);
+        opacity: 1;
     }
 }
 
@@ -948,13 +961,9 @@ footer {
         font-size: 18px;
     }
 
-    .rune__orb {
-        width: 280px;
-        height: 280px;
-    }
-
-    .orb {
-        inset: 70px;
+    .magic-circle {
+        width: 340px;
+        height: 340px;
     }
 
     .project__description--title{
@@ -1014,21 +1023,13 @@ footer {
         padding: 0 12px;
     }
 
-    .rune__orb {
-        width: 220px;
-        height: 220px;
+    .magic-circle {
+        width: 260px;
+        height: 260px;
     }
 
-    .orb {
-        inset: 55px;
-    }
-
-    .energy__ring {
-        inset: 18px;
-    }
-
-    .ring2 {
-        inset: 32px;
+    .magic-rune {
+        font-size: 20px;
     }
 
     .language {

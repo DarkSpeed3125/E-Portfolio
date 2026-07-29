@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const orb = document.querySelector(".rune__orb");
     document.addEventListener("mousemove", (e) => {
         document.documentElement.style.setProperty(
             "--mouse-x",
@@ -19,12 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             particle.remove();
         }, 1000);
-
-        
-        const x = (e.clientX / window.innerWidth - 0.5) * 20;
-        const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-        orb.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
     });
 
     const hiddenElements = document.querySelectorAll(".hidden");
@@ -43,36 +36,4 @@ document.addEventListener("DOMContentLoaded", () => {
     hiddenElements.forEach(element => {
         observer.observe(element);
     })
-
-    setInterval (() => {
-        const runes = document.querySelectorAll(".rune");
-        const rune = runes[Math.floor(Math.random()*runes.length)];
-
-        rune.classList.add("flicker");
-        setTimeout(() => {
-            rune.classList.remove("flicker");
-        }, 250);
-    }, 2000);
-
-    const bolt = document.querySelector(".lightning");
-
-    function strike () {
-        bolt.style.opacity = 1;
-        bolt.style.transform = `rotate(${Math.random()*360}deg)`;
-        setTimeout(() => {
-            bolt.style.opacity = 0;
-        }, 120);
-    }
-
-    setInterval(() => {
-        orb.classList.add("surge");
-        setTimeout(() => {
-            orb.classList.remove("surge");
-        }, 700);
-    }, 8000);
-
-    setInterval(() => {
-        strike();
-        setTimeout(strike, 80);
-    }, 5000);
 })
