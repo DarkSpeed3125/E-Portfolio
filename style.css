@@ -1367,12 +1367,44 @@ footer {
     }
 
     .language {
-        width: 50%;
-        margin-bottom: 30px;
+        width: 100%;
     }
 
-    .language__img {
-        max-width: 80px;
+    .language__list {
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .spellbook {
+        width: 170px;
+        height: 170px;
+    }
+
+    .book-rune {
+        animation-duration: 10s;
+    }
+
+    .spellbook__pages:after {
+        animation-duration: 11s;
+    }
+
+    .spellbook__glow {
+        opacity: .55;
+        transform: scale(1.2);
+    }
+
+    .book-rune {
+        opacity: .9;
+    }
+
+    .spellbook:hover {
+        transform: none;
+    }
+
+    .language__name {
+        margin-top: 18px;
+        line-height: 1.4;
     }
 
     .project__wrapper {
