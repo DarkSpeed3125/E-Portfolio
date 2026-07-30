@@ -520,29 +520,161 @@ a {
 /* TECH_STACK */
 
 .language__img{
-    width: 100%;
-    max-width: 100px;
-    transition: all 300ms ease;
+    width: 60px;
+    z-index: 2;
+    transition: .4s;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, .3))
 }
 
 .language {
     width:25%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     position: relative;
+    padding-bottom: 40px;
 }
 
-.language:hover .language__img {
-    filter: brightness(80%);
-    opacity: 0.86;
-    transform: scale(0.9);
-}
-
-.language__img--wrapper {
+.spellbook {
+    position: relative;
+    width: 120px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px 16px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: .5s;
+    animation: floatBook 5s ease-in-out infinite;
+}
+
+.spellbook__pages {
+    position: absolute;
+    width: 90%;
+    height: 92%;
+    right: -4px;
+    background: #efe5c8;
+    border-radius: 6px;
+    z-index: -1;
+    box-shadow: 
+        2px 0 white,
+        4px 0 #ddd,
+        6px 0 #ccc;
+}
+
+.spellbook__pages:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    right: 3px;
+    bottom: 4px;
+    background: #faf3dd;
+    border-radius: 5px;
+    transform-origin: left center;
+    animation: pageTurn 7s ease-in-out infinite;
+    box-shadow: 
+        inset -1px 0 rgba(0,0,0,.08),
+        1px 0 rgba(255, 255, 255, .6);
+}
+
+.language:nth-child(1) .spellbook__pages:after{
+    animation-delay: 0s;
+}
+
+.language:nth-child(2) .spellbook__pages:after{
+    animation-delay: 1.8s;
+}
+
+.language:nth-child(3) .spellbook__pages:after{
+    animation-delay: 3.4s;
+}
+
+.language:nth-child(4) .spellbook__pages:after{
+    animation-delay: .9s;
+}
+
+.spellbook__glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    opacity: 0;
+    filter:blur(10px);
+    z-index: -2;
+    transition: .5s;
+}
+
+.html-spellbook__glow {
+    background: radial-gradient(circle, #ff9f43 0%, #ff6b35 35%, transparent 75%);
+}
+
+.css-spellbook__glow {
+    background: radial-gradient(circle, #6ed7ff 0%, #3fa9f5 35%, transparent 75%);
+}
+
+.Js-spellbook__glow {
+    background: radial-gradient(circle, #ffe45e 0%, #ffc300 35%, transparent 75%);
+}
+
+.react-spellbook__glow {
+    background: radial-gradient(circle, #c48cff 0%, #8d5cff 35%, transparent 75%);
+}
+
+.book-rune {
+    position: absolute;
+    font-size: 18px;
+    color:#d8b56a;
+    text-shadow: 
+        0 0 8px #c793ff,
+        0 0 16px #7d5cff;
+    opacity: .65;
+    pointer-events: none;
+    animation: bookRuneGlow 2.5s ease-in-out infinite;
+}
+
+.rune1 {
+    top: -10px;
+    left: 50%;
+    animation:
+        orbitOne 7s linear infinite,
+        bookRuneGlow 2s ease-in-out infinite;
+}
+
+.rune2 {
+    left: -10px;
+    top: 55%;
+     animation:
+        orbitTwo 8s linear infinite,
+        bookRuneGlow 2.3s ease-in-out infinite;
+}
+
+.rune3 {
+    right: -10px;
+    top: 40%;
+     animation:
+        orbitThree 6.5s linear infinite,
+        bookRuneGlow 1.9s ease-in-out infinite;
+}
+
+.language:hover .spellbook {
+     transform: 
+        translateY(-18px)
+        rotateY(-18deg)
+        rotateZ(-5deg)
+        scale(1.08);
+}
+
+.language:hover .spellbook__glow {
+    opacity: 1;
+}
+
+.language:hover .spellbook__pages {
+    filter: brightness(1.15);
+}
+
+.language:hover .book-rune {
+    animation-duration: 2s, 1s;
+    transform: scale(1.2);
 }
 
 .language__list{
@@ -552,15 +684,17 @@ a {
 }
 
 .language__name {
-    position: absolute;
-    bottom: 0;
-    transform: scale(0);
-    transition: all 300ms;
+    margin-top: 20px;
     font-size: 20px;
+    text-align: center;
+    transform: scale(0);
+    opacity: 0;
+    transition: all 300ms ease;
 }
 
 .language:hover .language__name{
     transform:scale(1);
+    opacity: 1;
 }
 
 /* PROJECTS */
@@ -901,6 +1035,97 @@ footer {
         opacity: 0;
         transform: translateY(-20px);
         visibility: hidden;
+    }
+}
+
+@keyframes floatBook {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+}
+
+@keyframes pageTurn {
+    0%, 85%, 100% {
+        transform: rotateY(0deg);
+    } 
+
+    88% {
+        transform: rotateY(-18deg);
+    }
+
+    91% {
+        transform: rotateY(-28deg);
+    }
+
+    96% {
+        transform: rotateY(-8deg);
+    }
+}
+
+@keyframes orbitOne {
+    from {
+        transform: 
+            rotate(0deg) 
+            translateX(18px) 
+            rotate(0deg);
+    }
+
+    to {
+        transform: 
+            rotate(360deg)
+            translateX(18px)
+            rotate(-360deg);
+    }
+}
+
+@keyframes orbitTwo {
+    from {
+        transform: 
+            rotate(120deg) 
+            translateX(18px) 
+            rotate(-120deg);
+    }
+
+    to {
+        transform: 
+            rotate(480deg)
+            translateX(18px)
+            rotate(-480deg);
+    }
+}
+
+@keyframes orbitThree {
+    from {
+        transform: 
+            rotate(240deg) 
+            translateX(18px) 
+            rotate(-240deg);
+    }
+
+    to {
+        transform: 
+            rotate(600deg)
+            translateX(18px)
+            rotate(-600deg);
+    }
+}
+
+@keyframes bookRuneGlow {
+    0%, 100% {
+        opacity: .45;
+        text-shadow: 0 0 6px #9d72ff;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 
+            0 0 12px #ffffff,
+            0 0 25px #c793ff,
+            0 0 40px #7d5cff;
     }
 }
 
